@@ -159,8 +159,14 @@
 * "`Gang of Four`_" published in 1994, described 23 classic software design patterns;
 * `patterns in python`_
     * factory_method_
-    * builder_
 
+    .. image:: /ystatic/factory_method.jpg
+
+    * state_
+
+    .. image:: /ystatic/state.jpg
+
+参考阅读：《 `设计模式 可复用面向对象软件的基础`_ 》
 
 -----------------------------------------------------
 
@@ -168,11 +174,57 @@
 -------------------
 策略：
 
+1. 将错误状态稳定下来；
+2. 确定错误来源——
+    a. 收集产生缺陷的相关数据，
+    b. 分析所收集的数据，并构造对缺陷的假设，
+    c. 确定怎样去证实或证伪这个假设，可以对程序进行测试或是通过检查代码，
+    d. 按照2（c）确定的方法对假设做出最终结论；
+3. 修补缺陷；
+4. 对所修补的地方进行测试；
+5. 查找是否还有类似错误。
+
+*《代码大全》23.2 寻找缺陷*
+
 工具：
 
 * IDE: PyCharm, PyDev
 * pdb_
 * logging_
+
+::
+
+    import logging
+    LOG1=logging.getLogger('b.c')
+    LOG2=logging.getLogger('d.e')
+    filehandler = logging.FileHandler('test.log','a')
+    formatter = logging.Formatter('%(name)s %(asctime)s %(levelname)s %(message)s')
+    filehandler.setFormatter(formatter)
+    filter=logging.Filter('b')
+    filehandler.addFilter(filter)
+    LOG1.addHandler(filehandler)
+    LOG2.addHandler(filehandler)
+    LOG1.setLevel(logging.INFO)
+    LOG2.setLevel(logging.DEBUG)
+    LOG1.debug('it is a debug info for log1')
+    LOG1.info('normal infor for log1')
+    LOG1.warning('warning info for log1:b.c')
+    LOG1.error('error info for log1:abcd')
+    LOG1.critical('critical info for log1:not worked')
+    LOG2.debug('debug info for log2')
+    LOG2.info('normal info for log2')
+    LOG2.warning('warning info for log2')
+    LOG2.error('error:b.c')
+    LOG2.critical('critical')
+
+
+::
+
+    b.c 2011-11-25 11:07:29,733 INFO normal infor for log1
+    b.c 2011-11-25 11:07:29,733 WARNING warning info for log1:b.c
+    b.c 2011-11-25 11:07:29,733 ERROR error info for log1:abcd
+    b.c 2011-11-25 11:07:29,733 CRITICAL critical info for log1:not worked
+
 
 参考阅读：《`Python 代码调试技巧`_》
 
@@ -303,7 +355,11 @@
 参考阅读： 《`7 tips to Time Python scripts and control Memory & CPU usage`_》
 
 策略：
-
+    * Pareto法则
+    * 多线程 多进程
+    * C语言扩展_：
+        * ctypes
+        * SWIG_
 
 
 -----------------------------------------------------
@@ -315,11 +371,16 @@
 .. _abc:  https://www.python.org/dev/peps/pep-3119/
 .. _Design Pattern: https://en.wikipedia.org/wiki/Software_design_pattern
 .. _Gang of Four: https://en.wikipedia.org/wiki/Design_Patterns
+.. _设计模式 可复用面向对象软件的基础: https://www.amazon.cn/dp/B001130JN8
 .. _patterns in python: https://github.com/faif/python-patterns
 .. _Python 代码调试技巧: https://www.ibm.com/developerworks/cn/linux/l-cn-pythondebugger/index.html
 .. _pdb: https://docs.python.org/2/library/pdb.html
 .. _logging: https://docs.python.org/2/library/logging.html
 .. _factory_method: https://github.com/faif/python-patterns/blob/master/creational/factory_method.py
+.. _state: https://github.com/faif/python-patterns/blob/master/behavioral/state.py
 .. _builder: https://github.com/faif/python-patterns/blob/master/creational/builder.py
 .. _line_profiler: https://github.com/rkern/line_profiler
 .. _7 tips to Time Python scripts and control Memory & CPU usage: http://www.marinamele.com/7-tips-to-time-python-scripts-and-control-memory-and-cpu-usage?utm_source=Python%20Weekly%20Newsletter&utm_campaign=2bbc6ad4bc-Python_Weekly_Issue_167_November_27_2014&utm_medium=email&utm_term=0_9e26887fc5-2bbc6ad4bc-312702461
+.. _Pareto法则: https://en.wikipedia.org/wiki/Pareto_principle
+.. _C语言扩展: https://python3-cookbook.readthedocs.io/zh_CN/latest/chapters/p15_c_extensions.html
+.. _SWIG: http://www.swig.org/

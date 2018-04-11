@@ -6,7 +6,7 @@
 Python工程中的最佳实践
 =================================
 
-**BEST PRACTICE IN PYTHON'S PROJECT**
+**BEST PRACTICE IN PYTHON PROJECT**
 
 .. toctree::
    :maxdepth: 2
