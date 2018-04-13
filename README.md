@@ -1,7 +1,7 @@
 # Python工程中的最佳实践
 - - - -
 
-该文档是关于在Python工程中的最佳实践的一些分享，采用reStrauctText编写，可以通过sphinx编译成html或pdf。因此需要保证在环境中安装了sphinx。在终端中输入：
+该文档是关于在Python工程中的最佳实践的一些分享，采用reStructText编写，可以通过 [sphinx](https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html) 编译成html或pdf。因此需要保证在环境中安装了sphinx。在终端中输入：
 
 ```
 	$ pip install sphinx
@@ -19,4 +19,4 @@
 	$ make.bat html
 ```
 
-会在当前目录中生成一个名字是build的文件夹，在浏览器中打开 build_html_index.html 即可。
+会在当前目录中生成一个名字是build的文件夹，在浏览器中打开 build/html/index.html 即可。
