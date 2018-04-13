@@ -156,7 +156,7 @@
 .. _选择协议: http://www.lanceyan.com/tech/arch/opensource_permission.html
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
 .. _REST vs SOAP: https://blog.smartbear.com/apis/understanding-soap-and-rest-basics/
-.. _Checklist-Architecture: https://github.com/muma378/python-in-practice/blob/master/checklist-on-architecture.md
+.. _Checklist-Architecture: https://github.com/muma378/python-in-practice/blob/master/extra/checklist-on-architecture.md
 .. _Virtualenv: https://virtualenv.pypa.io/en/stable/
 .. _packaging: https://packaging.python.org/tutorials/distributing-packages/
 .. _PyPI: https://pypi.python.org/pypi
